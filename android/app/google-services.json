@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "902995404067",
+    "firebase_url": "https://airdropbazar-f55f1.firebaseio.com",
+    "project_id": "airdropbazar-f55f1",
+    "storage_bucket": "airdropbazar-f55f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902995404067:android:4c381a32d3aab35523d896",
+        "android_client_info": {
+          "package_name": "com.example.airdropbazarfinal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902995404067-9hmom170fojq8u6tk309l0bcjuv4tlqe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0iKX-gvZ7_Vmqb4ZwgLDir4ccg_ie0Ug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "902995404067-9hmom170fojq8u6tk309l0bcjuv4tlqe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
