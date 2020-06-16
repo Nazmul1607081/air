@@ -2,6 +2,7 @@ import 'package:airdropbazarfinal/instruction.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'admob.dart';
 
 import 'package:airdropbazarfinal/youtubevideoplayer.dart';
 
@@ -81,6 +82,9 @@ class DetailsAirDrop extends StatelessWidget {
               ),
             ),
             Container(
+              child: AdMob(),
+            ),
+            Container(
               padding: EdgeInsets.all(5),
               child: Text(
                 "Instruction",
@@ -92,6 +96,9 @@ class DetailsAirDrop extends StatelessWidget {
             ),
             Instructions(
               instruction_no: instruction,
+            ),
+            Container(
+              child: AdMob(),
             ),
             Container(
               padding: EdgeInsets.all(5),
@@ -128,7 +135,7 @@ class DetailsAirDrop extends StatelessWidget {
                         "WhitePaper",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 25,
+                            fontSize: 20,
                             color: Colors.white),
                       ),
                     ),
@@ -150,7 +157,7 @@ class DetailsAirDrop extends StatelessWidget {
                         "Website",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 25,
+                            fontSize: 20,
                             color: Colors.white),
                       ),
                     ),

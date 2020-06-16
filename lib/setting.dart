@@ -95,9 +95,9 @@ class _SettingState extends State<Setting> {
                 ),
               ),
             ),
-            Container(
+            /*Container(
               child: AdMob(),
-            ),
+            ),*/
             Divider(),
             SingleRow(
               icon: Image(image: AssetImage("images/youtube.png")),

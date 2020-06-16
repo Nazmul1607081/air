@@ -13,6 +13,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:admob_flutter/admob_flutter.dart';
 
 String url = "";
+int i = 0;
 
 class HomePage extends StatefulWidget {
   @override
@@ -56,9 +57,9 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-        Container(
+        /*Container(
           child: AdMob(),
-        ),
+        ),*/
         StreamBuilder<QuerySnapshot>(
           stream: Firestore.instance.collection('airdrop').snapshots(),
           builder:
@@ -68,26 +69,37 @@ class _HomePageState extends State<HomePage> {
               case ConnectionState.waiting:
                 return new Text('Loading...');
               default:
-                return new ListView(
-                  shrinkWrap: true,
-                  physics: ScrollPhysics(),
-                  children:
-                      snapshot.data.documents.map((DocumentSnapshot document) {
-                    return new AirDrop(
-                      day: document['days'],
-                      name: document['name'],
-                      cost: document['cost'],
-                      rating: document['rating'],
-                      image: document['image'],
-                      information: document['information'],
-                      instruction: document['instruction'],
-                      video_link: document['video_link'],
-                      whitepaper_link: document['whitepaper_link'],
-                      website_link: document['website_link'],
-                      join_link: document['join_link'],
-                    );
-                  }).toList(),
-                );
+                print("printingggggggggggggg");
+                print(snapshot.data.documents.length);
+
+                return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: snapshot.data.documents.length *
+                        2, //snapshot.data.documents.length,
+                    physics: ScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      DocumentSnapshot document = snapshot.data.documents[i];
+                      if (index % 2 == 0) {
+                        i++;
+                        i = (i % 2);
+
+                        return new AirDrop(
+                          day: document['days'],
+                          name: document['name'],
+                          cost: document['cost'],
+                          rating: document['rating'],
+                          image: document['image'],
+                          information: document['information'],
+                          instruction: document['instruction'],
+                          video_link: document['video_link'],
+                          whitepaper_link: document['whitepaper_link'],
+                          website_link: document['website_link'],
+                          join_link: document['join_link'],
+                        );
+                      } else {
+                        return AdMob();
+                      }
+                    });
             }
           },
         ),
@@ -151,3 +163,38 @@ class FullscreenSliderDemo extends StatelessWidget {
     );
   }
 }
+
+/*ListView(
+                  shrinkWrap: true,
+                  physics: ScrollPhysics(),
+                  children:
+                      snapshot.data.documents.map((DocumentSnapshot document) {
+                    return new AirDrop(
+                      day: document['days'],
+                      name: document['name'],
+                      cost: document['cost'],
+                      rating: document['rating'],
+                      image: document['image'],
+                      information: document['information'],
+                      instruction: document['instruction'],
+                      video_link: document['video_link'],
+                      whitepaper_link: document['whitepaper_link'],
+                      website_link: document['website_link'],
+                      join_link: document['join_link'],
+                    );
+                  }).toList(),
+                );*/
+
+/*
+void getData() {
+  print("get data called");
+  databaseReference
+      .collection("update")
+      .getDocuments()
+      .then((QuerySnapshot snapshot) {
+    snapshot.documents.forEach((f) {
+      print('${f.data}}');
+      print(f.data['title']);
+    });
+  });
+}*/

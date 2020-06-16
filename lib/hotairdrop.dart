@@ -5,6 +5,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+int i = 0;
+
 class HotAirDrop extends StatefulWidget {
   @override
   _HotAirDropState createState() => _HotAirDropState();
@@ -24,18 +26,25 @@ class _HotAirDropState extends State<HotAirDrop> {
             case ConnectionState.waiting:
               return new Text('Loading...');
             default:
-              return new ListView(
-                shrinkWrap: true,
-                physics: ScrollPhysics(),
-                children:
-                    snapshot.data.documents.map((DocumentSnapshot document) {
-                  print(document['image']);
-                  return new SingleHotAir(
-                    image: document['image'],
-                    link: document['link'],
-                  );
-                }).toList(),
-              );
+              return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: snapshot.data.documents.length *
+                      2, //snapshot.data.documents.length,
+                  physics: ScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    DocumentSnapshot document = snapshot.data.documents[i];
+                    if (index % 2 == 0) {
+                      i++;
+                      i = (i % 2);
+
+                      return SingleHotAir(
+                        image: document['image'],
+                        link: document['link'],
+                      );
+                    } else {
+                      return Divider();
+                    }
+                  });
           }
         },
       )),
@@ -63,9 +72,30 @@ class SingleHotAir extends StatelessWidget {
         print("inkwell");
         _launchURL(link);
       },
-      child: Column(
-        children: <Widget>[
-          Container(
+      child: Container(
+        height: 180,
+        padding: EdgeInsets.all(0),
+        margin: EdgeInsets.all(0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: new Image(
+          fit: BoxFit.cover,
+          image: new CachedNetworkImageProvider(image),
+        ),
+      ),
+    );
+  }
+}
+
+// "https://img.techpowerup.org/200611/banner1.jpg",
+
+/*InkWell(
+          onTap: () {
+            print("inkwell");
+            _launchURL(link);
+          },
+          child: Container(
             height: 180,
             padding: EdgeInsets.all(0),
             margin: EdgeInsets.all(0),
@@ -73,17 +103,8 @@ class SingleHotAir extends StatelessWidget {
               borderRadius: BorderRadius.circular(4),
             ),
             child: new Image(
+              fit: BoxFit.cover,
               image: new CachedNetworkImageProvider(image),
             ),
           ),
-          Container(
-            padding: EdgeInsets.all(0),
-            child: AdMob(),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-// "https://img.techpowerup.org/200611/banner1.jpg",
+        )*/

@@ -1,3 +1,4 @@
+import 'package:airdropbazarfinal/admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -5,6 +6,8 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
+
+int i = 0;
 
 class Update extends StatefulWidget {
   @override
@@ -48,7 +51,8 @@ class CustomUpdate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(5),
+      padding: EdgeInsets.all(5),
+      margin: EdgeInsets.all(0),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4), border: Border.all(width: 3)),
       child: Column(
@@ -125,7 +129,8 @@ class _UpdateListViewState extends State<UpdateListView> {
     return ListView(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.fromLTRB(5, 0, 5, 5),
+          padding: EdgeInsets.all(0),
+          margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
           child: Column(
             children: <Widget>[
               Padding(
@@ -176,17 +181,28 @@ class _UpdateListViewState extends State<UpdateListView> {
               case ConnectionState.waiting:
                 return new Text('Loading...');
               default:
-                return new ListView(
-                  shrinkWrap: true,
-                  physics: ScrollPhysics(),
-                  children:
-                      snapshot.data.documents.map((DocumentSnapshot document) {
-                    return new CustomUpdate(
-                      title: document['title'],
-                      description: document['description'],
-                    );
-                  }).toList(),
-                );
+                return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: snapshot.data.documents.length *
+                        2, //snapshot.data.documents.length,
+                    physics: ScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      DocumentSnapshot document = snapshot.data.documents[i];
+                      if (index % 2 == 0) {
+                        i++;
+                        i = (i % 2);
+
+                        return CustomUpdate(
+                          title: document['title'],
+                          description: document['description'],
+                        );
+                      } else {
+                        return Container(
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          child: AdMob(),
+                        );
+                      }
+                    });
             }
           },
         )
