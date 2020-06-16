@@ -1,3 +1,5 @@
+import 'package:airdropbazarfinal/admob.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -61,15 +63,24 @@ class SingleHotAir extends StatelessWidget {
         print("inkwell");
         _launchURL(link);
       },
-      child: Container(
-        height: 200,
-        margin: EdgeInsets.all(5),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
-        ),
-        child: new Image(
-          image: new CachedNetworkImageProvider(image),
-        ),
+      child: Column(
+        children: <Widget>[
+          Container(
+            height: 180,
+            padding: EdgeInsets.all(0),
+            margin: EdgeInsets.all(0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: new Image(
+              image: new CachedNetworkImageProvider(image),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(0),
+            child: AdMob(),
+          )
+        ],
       ),
     );
   }

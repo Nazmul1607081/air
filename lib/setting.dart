@@ -1,6 +1,8 @@
+import 'package:airdropbazarfinal/admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'admob.dart';
 
 class Setting extends StatefulWidget {
   @override
@@ -92,6 +94,9 @@ class _SettingState extends State<Setting> {
                   style: TextStyle(fontSize: 20),
                 ),
               ),
+            ),
+            Container(
+              child: AdMob(),
             ),
             Divider(),
             SingleRow(

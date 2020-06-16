@@ -1,3 +1,4 @@
+import 'package:airdropbazarfinal/admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -8,6 +9,8 @@ import 'package:airdropbazarfinal/airdrop1.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:admob_flutter/admob_flutter.dart';
 
 String url = "";
 
@@ -36,7 +39,7 @@ class _HomePageState extends State<HomePage> {
         Container(
           color: Colors.white30,
           //color: Colors.black54,
-          height: 80,
+          height: 40,
           child: Center(
             child: Container(
               decoration: BoxDecoration(
@@ -52,6 +55,9 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+        ),
+        Container(
+          child: AdMob(),
         ),
         StreamBuilder<QuerySnapshot>(
           stream: Firestore.instance.collection('airdrop').snapshots(),

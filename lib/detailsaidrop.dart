@@ -106,7 +106,7 @@ class DetailsAirDrop extends StatelessWidget {
             Container(
                 height: 200,
                 width: 100,
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.only(bottom: 10),
                 child: MyYoutubePlayer(
                   video_link: video_link,
                 )

@@ -48,7 +48,7 @@ class CustomUpdate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(15),
+      margin: EdgeInsets.all(5),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4), border: Border.all(width: 3)),
       child: Column(
@@ -125,14 +125,14 @@ class _UpdateListViewState extends State<UpdateListView> {
     return ListView(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.fromLTRB(5, 25, 5, 5),
+          margin: EdgeInsets.fromLTRB(5, 0, 5, 5),
           child: Column(
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                 child: Text(
                   "If you have any update you can share it with us.",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                 ),
               ),
               TextField(

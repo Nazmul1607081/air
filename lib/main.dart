@@ -31,6 +31,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: CustomScaffold(
+        onItemTap: (item) {
+          print("custom scaffold" + item.toString());
+        },
         scaffold: Scaffold(
           bottomNavigationBar: BottomNavigationBar(
             elevation: 8,

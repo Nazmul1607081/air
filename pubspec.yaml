@@ -37,7 +37,9 @@ dependencies:
   cached_network_image: ^2.2.0+1
   fluttertoast: ^4.0.0
   custom_navigator: ^0.3.0
+  admob_flutter: ^0.3.4
   firebase_admob: ^0.9.3+2
+
 
 
 
