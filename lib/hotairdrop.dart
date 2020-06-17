@@ -33,9 +33,10 @@ class _HotAirDropState extends State<HotAirDrop> {
                   physics: ScrollPhysics(),
                   itemBuilder: (context, index) {
                     DocumentSnapshot document = snapshot.data.documents[i];
+                    int len = snapshot.data.documents.length;
                     if (index % 2 == 0) {
                       i++;
-                      i = (i % 2);
+                      i = (i % len);
 
                       return SingleHotAir(
                         image: document['image'],
